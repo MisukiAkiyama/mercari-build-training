@@ -34,9 +34,7 @@ def add_item(name: str = Form(...),category: str = Form(...),image: UploadFile =
     logger.info(f"Receive item: {category}")
     logger.info(f"Receive item: {image}")
 
-    print(image)
     jpg = os.path.basename(image)
-    print(jpg)
     hashed_jpg = get_hash_by_sha256(jpg)
     save_items_to_file(name,category,hashed_jpg)
     return {"message": f"item received: {name}"}
