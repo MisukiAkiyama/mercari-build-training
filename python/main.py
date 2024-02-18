@@ -32,7 +32,7 @@ def add_item(name: str = Form(...),category: str = Form(...)):
     return {"message": f"item received: {name}"}
     save_items_to_file(name,category)
 
-# {"items": [{"name": "jacket", "category": "fashion"}, ...]}
+# 新しい商品をjsonファイルに保存する。 {"items": [{"name": "jacket", "category": "fashion"}, ...]}
 def save_items_to_file(name,category):
     if os.path.exists(items_file):
         new_item = {"name": {name}, "category": {category}}
