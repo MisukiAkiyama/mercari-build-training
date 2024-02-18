@@ -25,8 +25,9 @@ def root():
 
 
 @app.post("/items")
-def add_item(name: str = Form(...)):
+def add_item(name: str = Form(...),category: str = Form(...)):
     logger.info(f"Receive item: {name}")
+    logger.info(f"Receive item: {category}")
     return {"message": f"item received: {name}"}
 
 
