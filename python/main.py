@@ -9,7 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 logger = logging.getLogger("uvicorn")
-logger.level = logging.INFO
+logger.level = logging.DEBUG #デバッグを可能にする
 images = pathlib.Path(__file__).parent.resolve() / "images"
 items_file = pathlib.Path(__file__).parent.resolve() / "items.json"
 origins = [os.environ.get("FRONT_URL", "http://localhost:3000")]
@@ -34,16 +34,19 @@ def add_item(name: str = Form(...),category: str = Form(...),image: UploadFile =
     logger.info(f"Receive item: {category}")
     logger.info(f"Receive item: {image}")
 
-    jpg = image.filename
-    hashed_jpg = get_hash_by_sha256(jpg)
-    save_items_to_file(name,category,hashed_jpg)
+    image_name = image.filename
+    hashed_image_name = get_hash_by_sha256(image_name) #hash.jpg 作成
+
+    save_items_to_file(name,category,hashed_image_name) #items.jsonに商品を保存
+    save_image_file(image,hashed_image_name) #imagesに画像を保存
+
     return {"message": f"item received: {name}"}
 
 
 # 新しい商品をitem.jsonファイルに保存
 # {"items": [{"name": "jacket", "category": "fashion", "image_name": "xxxxx.jpg"}, ...]}
 def save_items_to_file(name,category,image_name):
-    new_item = {"name": name, "category": category, "image_name": image_name+".jpg"}
+    new_item = {"name": name, "category": category, "image_name": image_name}
     if os.path.exists(items_file):
         with open(items_file,'r') as f:
             now_data = json.load(f)
@@ -58,13 +61,19 @@ def save_items_to_file(name,category,image_name):
         with open(items_file, 'w') as f:
             json.dump(first_item, f, indent=2)
 
+# 画像をimagesに保存 
+def save_image_file(image,jpg_hashed_image_name):
+    imagefile = image.file.read()
+    image = images / jpg_hashed_image_name
+    with open(image, 'wb') as f:
+        f.write(imagefile)
+    return
 
-# sha256でハッシュ化
+
+# sha256でハッシュ化 jpg型で返す
 def get_hash_by_sha256(image):
     hs = hashlib.sha256(image.encode()).hexdigest()
-    return hs
-
-
+    return hs+".jpg"
 
 
 # items.jsonファイルに登録された商品一覧を取得
