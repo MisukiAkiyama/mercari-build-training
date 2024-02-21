@@ -133,4 +133,4 @@ Make sure you understand the following concepts
 
 ### Next
 
-[STEP5: Implement a simple Mercari webapp as frontend](07-frontend.en.md)
+[STEP7: Implement a simple Mercari webapp as frontend](07-frontend.en.md)
