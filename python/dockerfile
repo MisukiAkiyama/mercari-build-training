@@ -9,7 +9,10 @@ RUN pip3 install -r requirements.txt
 COPY . .
 
 CMD ["python", "-V"] 
-# ターミナルに出力される
+# ターミナルに出力される結果
+
+
+
 
 #FROM alpine
 
@@ -17,7 +20,6 @@ CMD ["python", "-V"]
 # RUN chown -R trainee:mercari /path/to/db
 
 #USER trainee
-
 
 
 
