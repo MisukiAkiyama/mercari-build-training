@@ -99,7 +99,7 @@ Goの場合は、上のエラーメッセージの`"python"`の部分が`"go"`�
 
 **`Dockerfile` を変更し STEP2 でインストールしたのと同じバージョンの Python や Go が docker image で使えるようにしましょう。**
 
-変更した `Dockerfile` で build した Image を実行し、STEP5-2 と同じ結果が表示されれば成功です。
+変更した `Dockerfile` で build した Image を実行し、STEP2-2 と同じ結果が表示されれば成功です。
 
 **:book: Reference**
 
