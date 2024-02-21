@@ -100,7 +100,7 @@ ERRO[0000] error waiting for container: context canceled
 
 **Modify the `Dockerfile` so that you can use the same version of Python/Go as STEP2 in your docker image.**
 
-Run the image with the modified `Dockerfile`, check if the same message is displayed as STEP5-2.
+Run the image with the modified `Dockerfile`, check if the same message is displayed as STEP2-2.
 
 **:book: Reference**
 
