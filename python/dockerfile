@@ -5,17 +5,16 @@ WORKDIR /app
 
 COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
+RUN apt-get update && apt-get install -y curl
 
 COPY . .
-
-WORKDIR /app/python
 
 EXPOSE 9000
 
 #CMD ["python", "-V"] 
 # python のバージョン確認
 
-CMD ["uvicorn", "main:app", "--reload", "--port", "9000"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "9000"]
 # API有効化する
 # RUNNING になる
 
