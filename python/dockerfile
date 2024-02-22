@@ -8,9 +8,16 @@ RUN pip3 install -r requirements.txt
 
 COPY . .
 
-CMD ["python", "-V"] 
-# ターミナルに出力される結果
+WORKDIR /app/python
 
+EXPOSE 9000
+
+#CMD ["python", "-V"] 
+# python のバージョン確認
+
+CMD ["uvicorn", "main:app", "--reload", "--port", "9000"]
+# API有効化する
+# RUNNING になる
 
 
 
