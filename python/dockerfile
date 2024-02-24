@@ -2,20 +2,22 @@
 FROM python:3.8-slim-buster
 
 WORKDIR /app
-
 # Pythonとcurlのinstall
 COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
 RUN apt-get update && apt-get install -y curl
 
-# image内にソースコードを置く
-COPY . .
+
+# image内にソースコードをコピー
+COPY db /app/db
+COPY . /app/python
+
 
 # このportで実行
 EXPOSE 9000
 
 # API有効化する
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "9000"]
+CMD ["uvicorn", "python.main:app", "--host", "0.0.0.0", "--port", "9000"]
 
 # python のバージョン確認
 #CMD ["python", "-V"]
