@@ -176,6 +176,7 @@ def get_Nth_item_from_json(item_number: int):
         return {"message": "item not found"}
     return items["items"][item_number-1]
     
+    
 # mercari.sqlite3に登録された商品のn番目の詳細を取得
 def get_Nth_item_from_sqlite(item_number: int):
     con = sqlite3.connect(sqlite3_file)
