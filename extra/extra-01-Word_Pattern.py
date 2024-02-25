@@ -14,4 +14,3 @@ class Solution:
                 if s_list[i] != pattern_dict[pattern[i]]:
                     return False
         return True
-        
