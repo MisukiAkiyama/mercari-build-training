@@ -132,3 +132,4 @@ STEP5-5 までで docker image の中は STEP5-2 と同じ状態になってい�
 ### Next
 
 [STEP7: Webのフロントエンドを実装する](07-frontend.ja.md)
+
