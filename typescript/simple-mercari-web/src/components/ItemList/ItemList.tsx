@@ -46,20 +46,39 @@ export const ItemList: React.FC<Prop> = (props) => {
   }, [reload]);
 
   return (
-    <div>
+    <div className="wrapper">
+      <div className="box2"></div>
       {items.map((item) => {
         return (
           <div key={item.id} className='ItemList'>
-            {/* TODO: Task 1: Replace the placeholder image with the item image */}
-            <img src={placeholderImage} />
-            <p>
-              <span>Name: {item.name}</span>
-              <br />
-              <span>Category: {item.category}</span>
-            </p>
+            <div className="item_box">
+              <div className="item_box_tape"> </div>
+              <img src={"http://localhost:9000/image/" + item.image_name} width="150" height="150"/>
+              <p>
+                <span>Name: {item.name}</span>
+                <br />
+                <span>Category: {item.category}</span>
+              </p>
+            </div>
           </div>
+          
         )
       })}
     </div>
   )
 };
+
+/*
+<div className="box1">
+        <p>
+        <div >
+          <span className="box-title">Choose Category</span>
+          <input type='text' name='name' id='name' placeholder='name' />
+          <input type='text' name='category' id='category' placeholder='category'  />
+          <button type='submit'>List this item</button>
+        </div>
+        </p>
+        </div>
+
+
+*/
