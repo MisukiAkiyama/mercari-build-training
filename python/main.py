@@ -14,7 +14,7 @@ logger.level = logging.DEBUG #デバッグを可能にする
 
 images = pathlib.Path(__file__).parent.resolve() / "images"
 items_file = pathlib.Path(__file__).parent.resolve() / "items.json"
-sqlite3_file = pathlib.Path(__file__).parent.parent.resolve() / "db" / "mercari.sqlite3"
+sqlite3_file = pathlib.Path(__file__).parent.resolve() / "db" / "mercari.sqlite3"
 
 
 origins = [os.environ.get("FRONT_URL", "http://localhost:3000")]
