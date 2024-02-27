@@ -49,11 +49,12 @@ export const ItemList: React.FC<Prop> = (props) => {
     <div className="wrapper">
       <div className="box2"></div>
       {items.map((item) => {
+        const imageUrl = `${server}/image/${item.image_name}`;
         return (
           <div key={item.id} className='ItemList'>
             <div className="item_box">
               <div className="item_box_tape"> </div>
-              <img src={"http://localhost:9000/image/" + item.image_name} width="150" height="150"/>
+              <img src={imageUrl} width="150" height="150"/>
               <p>
                 <span>Name: {item.name}</span>
                 <br />
