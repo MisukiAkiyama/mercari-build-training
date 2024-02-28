@@ -45,7 +45,7 @@ export const ItemList: React.FC<Prop> = (props) => {
     if (reload) {
       fetchItems();
     }
-  }, [reload ,fetchItems]);
+  }, [reload ]);
 
   const Like = () => {
     const [count, setCount] = useState(0);
