@@ -7,7 +7,7 @@ interface Item {
   image_name: string;
 };
 
-const server = process.env.REACT_APP_API_URL || 'http://localhost:9000'; /*http://127.0.0.1:9000*/ 
+const server = process.env.REACT_APP_API_URL || 'http://localhost:9000';  /*'http://localhost:9000'*/ 
 const placeholderImage = process.env.PUBLIC_URL + '/logo192.png';
 
 interface Prop {
@@ -18,6 +18,7 @@ interface Prop {
 export const ItemList: React.FC<Prop> = (props) => {
   const { reload = true, onLoadCompleted } = props;
   const [items, setItems] = useState<Item[]>([])
+  
   const fetchItems = () => {
     fetch(`${server}/items`,
       {
@@ -33,17 +34,29 @@ export const ItemList: React.FC<Prop> = (props) => {
         console.log('GET success:', data);
         setItems(data.items);
         onLoadCompleted && onLoadCompleted();
+      
       })
       .catch(error => {
         console.error('GET error:', error)
       })
-  }
+    }
 
   useEffect(() => {
     if (reload) {
       fetchItems();
     }
-  }, [reload]);
+  }, [reload ,fetchItems]);
+
+  const Like = () => {
+    const [count, setCount] = useState(0);
+    const handleClick = () => {
+      setCount(count + 1);
+    };
+    return (
+      <span className="likeButton" onClick={handleClick}> ♥ {count} </span>
+    );
+  }
+  
 
   return (
     <div className="wrapper">
@@ -54,21 +67,23 @@ export const ItemList: React.FC<Prop> = (props) => {
           <div key={item.id} className='ItemList'>
             <div className="item_box">
               <div className="item_box_tape"> </div>
-              <img src={imageUrl} width="150" height="150"/>
+              <img src={imageUrl} alt ={placeholderImage} width="150" height="150"/>
               <p>
                 <span>Name: {item.name}</span>
                 <br />
                 <span>Category: {item.category}</span>
+                <br/> <br/> 
+                <span className="likeButton"><Like/> </span>   
               </p>
             </div>
-          </div>
-          
+          </div>     
         )
       })}
+      
     </div>
   )
 };
-
+/*<span> <Like /></span>*/
 /*
 <div className="box1">
         <p>

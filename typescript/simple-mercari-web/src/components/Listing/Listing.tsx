@@ -38,6 +38,7 @@ export const Listing: React.FC<Prop> = (props) => {
     data.append('category', values.category)
     data.append('image', values.image)
 
+
     fetch(server.concat('/items'), {
       method: 'POST',
       mode: 'cors',
@@ -46,6 +47,7 @@ export const Listing: React.FC<Prop> = (props) => {
       .then(response => {
         console.log('POST status:', response.statusText);
         onListingCompleted && onListingCompleted();
+       
       })
       .catch((error) => {
         console.error('POST error:', error);

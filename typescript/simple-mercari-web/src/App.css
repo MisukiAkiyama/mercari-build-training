@@ -116,6 +116,7 @@
   background-color: #e0d4cb;
   min-height: 8vh;
   display: flex;
+  margin: 0.5em 0.5em;
   flex-direction: column;
   align-items: center;
   justify-content: right;
@@ -143,3 +144,10 @@
    opacity: 0.1;
 }
 
+.likeButton {
+  background-color: rgb(231, 76, 60);
+  color: white;
+  padding: 0.8rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
