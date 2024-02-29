@@ -14,6 +14,7 @@ type formDataType = {
 
 export const Listing: React.FC<Prop> = (props) => {
   const { onListingCompleted } = props;
+  
   const initialState = {
     name: "",
     category: "",
@@ -38,6 +39,7 @@ export const Listing: React.FC<Prop> = (props) => {
     data.append('category', values.category)
     data.append('image', values.image)
 
+
     fetch(server.concat('/items'), {
       method: 'POST',
       mode: 'cors',
@@ -46,14 +48,17 @@ export const Listing: React.FC<Prop> = (props) => {
       .then(response => {
         console.log('POST status:', response.statusText);
         onListingCompleted && onListingCompleted();
+        alert(`done!`);
       })
       .catch((error) => {
         console.error('POST error:', error);
       })
   };
+
+   /* Listingの出力 */
   return (
     <div className='Listing'>
-      <form onSubmit={onSubmit} className= 'box26'>
+      <form onSubmit={onSubmit} className= "listingBox">
         <span className="box-title">Add items</span>
         <p>
         <div >
@@ -66,7 +71,7 @@ export const Listing: React.FC<Prop> = (props) => {
           <input type='file' name='image' id='image' onChange={onFileChange} required />
         </div>
         <div>
-          <button type='submit'>List this item</button>
+          <button type='submit' className="submitButton" >List this item</button>
         </div>
         </p>
       </form>
