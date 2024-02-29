@@ -57,10 +57,10 @@ export const ItemList: React.FC<Prop> = (props) => {
     );
   }
   
-
+   /* ItemListの出力 */
   return (
-    <div className="wrapper">
-      <div className="box2"></div>
+    <div className="listGrid">
+      <div className="adjustment"></div>
       {items.map((item) => {
         const imageUrl = `${server}/image/${item.image_name}`;
         return (
@@ -79,22 +79,9 @@ export const ItemList: React.FC<Prop> = (props) => {
           </div>     
         )
       })}
-      
+
     </div>
   )
 };
-/*<span> <Like /></span>*/
-/*
-<div className="box1">
-        <p>
-        <div >
-          <span className="box-title">Choose Category</span>
-          <input type='text' name='name' id='name' placeholder='name' />
-          <input type='text' name='category' id='category' placeholder='category'  />
-          <button type='submit'>List this item</button>
-        </div>
-        </p>
-        </div>
+  
 
-
-*/

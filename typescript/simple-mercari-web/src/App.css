@@ -16,6 +16,10 @@
   font-family: 'Amatic SC', cursive;
 }
 
+
+
+/*---------------------------ItemList.tsx---------------------------*/
+
 .Listing {
   background-color: #543720;
   height: 170px;
@@ -28,18 +32,8 @@
   color: white;
 }
 
-.add_box{
-  width: 240px;/* 紙の横幅 100%にすると全幅表示に */
-  height: 110px;
-  padding: 15px;
-  /*margin: 2em auto;*/
-  text-align: left;
-  background: #a3b7f5;/* 紙の色 */
-  color: #000;/* 文字色 */
-  word-break: break-all;
-}
 
-.box26 {
+.listingBox {
   background-color: #543720;
   position: relative;
   margin: 2em 0;
@@ -48,7 +42,7 @@
   color: #e0d4cb; 
   border-radius: 8px;
 }
-.box26 .box-title {
+.listingBox .box-title {
   position: absolute;
   display: inline-block;
   top: -13px;
@@ -61,25 +55,14 @@
   font-weight: bold;
   font-family: 'Amatic SC', cursive;
 }
-.box26 p {
+.listingBox p {
   margin: 0; 
   padding: 0;
 }
 
-/* カテゴリー条件 */
-.box1 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: left;
-  height: 60px;
-  background: #543720;
-  grid-column-start: 1;
-  grid-column-end: 5;
-  grid-row-start: 1;
-  /*grid-row-end: 3;*/
-}
-.box2 {
+
+/* ListingとitemListの間隔調節 */
+.adjustment {
   height: 1px;
   background: #543720;
   grid-column-start: 1;
@@ -87,7 +70,6 @@
   grid-row-start: 1;
   /*grid-row-end: 3;*/
 }
-
 
 .App-link {
   color: #61dafb;
@@ -102,8 +84,11 @@
   }
 }
 
+
+/*---------------------------ItemList.tsx---------------------------*/
+
 /* 商品一覧をグリッド状に展示する */
-.wrapper {
+.listGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   row-gap: 10px;
@@ -151,3 +136,20 @@
   border-radius: 0.4rem;
   cursor: pointer;
 }
+
+
+.submitButton {
+  text-decoration: none;
+  display: block;
+  width: 200px;
+  padding: 10px 0;
+  text-align: center;
+  background-color: #99aa9c;
+  color: #f5efa3;
+  transition: 0.5s;
+}
+ 
+.submitButton:hover {
+  transform: scale(1.1, 1.1);
+}
+
